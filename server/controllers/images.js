@@ -3,7 +3,8 @@ const fsPromises = fs.promises;
 const multer = require("multer");
 const path = require ("path");
 
-const testPath = path.join(process.cwd(), 'public', './images');
+const testPath = path.join(process.cwd(),'images');
+console.log(testPath);
 
 const fetchAllImages = async (req, res) => {
   try {
