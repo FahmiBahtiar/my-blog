@@ -3,7 +3,7 @@ const fs = require("fs");
 const multer = require("multer");
 const path = require ("path");
 
-const dir = path.resolve('./images');
+const dir = path.join(process.cwd(), 'posts');
 
 const fetchAllImages = async (req, res) => {
   try {
