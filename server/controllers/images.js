@@ -1,13 +1,13 @@
-const readdir = require("fs");
+const fs = require("fs");
 // const fsPromises = fs.promises;
 const multer = require("multer");
 const path = require ("path");
 
-const testPath = path.resolve(process.cwd(), "./images");
+const dir = path.resolve('./images');
 
 const fetchAllImages = async (req, res) => {
   try {
-    const images = await readdir(testPath);
+    const images = fs.readdirSync(dir);
     res.status(200).json([...images]);
   } catch (error) {
     res.status(500).json({ message: "something went wrong" });
