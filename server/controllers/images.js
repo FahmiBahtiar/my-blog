@@ -10,7 +10,7 @@ const fetchAllImages = async (req, res) => {
     const images = fs.readdirSync(dir);
     res.status(200).json([...images]);
   } catch (error) {
-    res.status(500).json({ message: "something went wrong" });
+    res.status(500).json({ message: "something went wrong", error: error });
   }
 };
 const storage = multer.diskStorage({
@@ -29,12 +29,12 @@ const uploadImage = async (req, res) => {
   try {
     upload(req, res, (err) => {
       if (err) {
-        return res.status(400).json({ message: "Error in uploading" });
+        return res.status(400).json({ message: "Error in uploading", error: err });
       }
       return res.status(200).json(req.file.filename);
     });
   } catch (error) {
-    return res.status(500).json({ message: "Something went wrong" });
+    return res.status(500).json({ message: "Something went wrong", error: error });
   }
 };
 
