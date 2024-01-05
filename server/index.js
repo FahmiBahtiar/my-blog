@@ -23,7 +23,7 @@ app.use(express.urlencoded({extended:false}));
 app.use(cors());
 
 // static files
-app.use("/images" , express.static('images'));
+app.use("/image" , express.static('images'));
 app.use("/blog", blogRouter);
 app.use("/admin", adminRouter);
 app.use("/images", imagesRouter);
