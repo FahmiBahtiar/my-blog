@@ -1,16 +1,16 @@
 const fs = require("fs");
-// const fsPromises = fs.promises;
+const fsPromises = fs.promises;
 const multer = require("multer");
 const path = require ("path");
 
-const dir = path.join(process.cwd(), 'posts');
+const testPath = path.join(process.cwd(), 'images');
 
 const fetchAllImages = async (req, res) => {
   try {
-    const images = fs.readdirSync(dir);
+    const images = await fsPromises.readdir(testPath);
     res.status(200).json([...images]);
   } catch (error) {
-    res.status(500).json({ message: "something went wrong", error: error });
+    res.status(500).json({ message: "something went wrong", error: error});
   }
 };
 const storage = multer.diskStorage({
